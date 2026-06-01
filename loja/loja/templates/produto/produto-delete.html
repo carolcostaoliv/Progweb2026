@@ -10,14 +10,18 @@
 {% block content %}
 <div id="content">
     <div class="container">
-        <form method="POST" action="/produto/edit">
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-exclamation-triangle"></i> Atenção: Você tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.
+        </div>
+
+        <form method="POST" action="/produto/delete">
             {% csrf_token %}
             <input type="hidden" value="{{ produto.id }}" name="id">
 
             <div class="form-group row mb-3">
-                <label for="Produto" class="col-md-2 col-form-label">Produto</label>
+                <label for="Produto" class="col-md-2 col-form-label font-weight-bold">Produto</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="Produto" value="{{ produto.Produto }}" name="Produto">
+                    <input type="text" class="form-control" id="Produto" value="{{ produto.Produto }}" name="Produto" disabled>
                 </div>
             </div>
 
@@ -25,9 +29,9 @@
                 <div class="col-md-6 offset-md-2">
                     <div class="form-check">
                         {% if produto.destaque %}
-                            <input type="checkbox" class="form-check-input" id="destaque" checked name="destaque">
+                            <input type="checkbox" class="form-check-input" id="destaque" checked name="destaque" disabled>
                         {% else %}
-                            <input type="checkbox" class="form-check-input" id="destaque" name="destaque">
+                            <input type="checkbox" class="form-check-input" id="destaque" name="destaque" disabled>
                         {% endif %}
                         <label class="form-check-label" for="destaque">Destaque</label>
                     </div>
@@ -38,9 +42,9 @@
                 <div class="col-md-6 offset-md-2">
                     <div class="form-check">
                         {% if produto.promocao %}
-                            <input type="checkbox" class="form-check-input" id="promocao" checked name="promocao">
+                            <input type="checkbox" class="form-check-input" id="promocao" checked name="promocao" disabled>
                         {% else %}
-                            <input type="checkbox" class="form-check-input" id="promocao" name="promocao">
+                            <input type="checkbox" class="form-check-input" id="promocao" name="promocao" disabled>
                         {% endif %}
                         <label class="form-check-label" for="promocao">Promoção</label>
                     </div>
@@ -48,16 +52,16 @@
             </div>
 
             <div class="form-group row mb-4">
-                <label for="msgPromocao" class="col-md-2 col-form-label">Msg Promoção</label>
+                <label for="msgPromocao" class="col-md-2 col-form-label font-weight-bold">Msg Promoção</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="msgPromocao" value="{{ produto.msgPromocao }}" name="msgPromocao">
+                    <input type="text" class="form-control" id="msgPromocao" value="{{ produto.msgPromocao }}" name="msgPromocao" disabled>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 offset-md-2 d-flex gap-2">
-                    <button type="submit" class="btn btn-danger align-middle">
-                        <i class="fa fa-check"></i> Salvar
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash"></i> Confirmar Exclusão
                     </button>
                     <a href="{% url 'produto' %}" class="btn btn-secondary text-white">
                         <i class="fa fa-rotate-left"></i> Retornar
