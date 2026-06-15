@@ -58,6 +58,31 @@
                 </div>
             </div>
 
+            <div class="form-group row mb-3">
+                <label class="col-md-2 col-form-label font-weight-bold">Imagem</label>
+                <div class="col-md-6">
+                    {% if produto.image %}
+                        <img class="img-thumbnail" width="200px" src="/media/{{ produto.image }}" alt="{{ produto.Produto }}">
+                    {% else %}
+                        <span class="text-muted">Nenhuma imagem cadastrada</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label for="Categoria" class="col-md-2 col-form-label font-weight-bold">Categoria</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="Categoria" value="{{ produto.categoria.Categoria }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group row mb-4">
+                <label for="Fabricante" class="col-md-2 col-form-label font-weight-bold">Fabricante</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="Fabricante" value="{{ produto.fabricante.Fabricante }}" disabled>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-6 offset-md-2 d-flex gap-2">
                     <button type="submit" class="btn btn-danger">

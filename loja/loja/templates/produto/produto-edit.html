@@ -10,7 +10,7 @@
 {% block content %}
 <div id="content">
     <div class="container">
-        <form method="POST" action="/produto/edit">
+        <form method="POST" enctype="multipart/form-data" action="/produto/edit">
             {% csrf_token %}
             <input type="hidden" value="{{ produto.id }}" name="id">
 
@@ -83,6 +83,19 @@
                             {% endif %}
                         {% endfor %}
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group row mb-4">
+                <label for="image" class="col-md-2 col-form-label font-weight-bold">Imagem</label>
+                <div class="col-md-6">
+                    {% if produto.image %}
+                        <div class="mb-2">
+                            <small class="text-muted d-block">Imagem atual:</small>
+                            <img class="img-thumbnail" width="150px" src="/media/{{ produto.image }}" alt="{{ produto.Produto }}">
+                        </div>
+                    {% endif %}
+                    <input type="file" class="form-control-file" id="image" name="image">
                 </div>
             </div>
 
