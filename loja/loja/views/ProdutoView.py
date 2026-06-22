@@ -123,7 +123,7 @@ def delete_produto_view(request, id=None):
     produtos = Produto.objects.all()
     if id is not None:
         produtos = produtos.filter(id=id)
-    produto = whitespaces = produtos.first()
+    produto = produtos.first()  
     Fabricantes = Fabricante.objects.all()
     Categorias = Categoria.objects.all()
     
