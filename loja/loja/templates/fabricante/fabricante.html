@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Categorias{% endblock %}
+{% block title %}Fabricantes{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -10,31 +10,31 @@
 {% block content %}
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Lista de Categorias</h2>
-        <a href="{% url 'create_categoria' %}" class="btn btn-primary">Nova Categoria</a>
+        <h2>Lista de Fabricantes</h2>
+        <a href="{% url 'create_fabricante' %}" class="btn btn-primary">Novo Fabricante</a>
     </div>
-    
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome da Categoria</th>
+                <th>Nome do Fabricante</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for c in categorias %}
+            {% for f in fabricantes %}
             <tr>
-                <td>{{ c.id }}</td>
-                <td>{{ c.Categoria }}</td>
+                <td>{{ f.id }}</td>
+                <td>{{ f.Fabricante }}</td>
                 <td>
-                    <a href="/categoria/editar/{{ c.id }}" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="/categoria/deletar/{{ c.id }}" class="btn btn-danger btn-sm">Deletar</a>
+                    <a href="/fabricante/editar/{{ f.id }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="/fabricante/deletar/{{ f.id }}" class="btn btn-danger btn-sm">Deletar</a>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="3" class="text-center">Nenhuma categoria cadastrada.</td>
+                <td colspan="3" class="text-center">Nenhum fabricante cadastrado.</td>
             </tr>
             {% endfor %}
         </tbody>

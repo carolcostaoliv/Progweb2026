@@ -1,4 +1,3 @@
-#loja/models/Produto.py parte 1:
 from loja.models import *
 
 class Produto(models.Model):

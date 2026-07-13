@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Deletar Fabricante{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h2>Excluir Fabricante</h2>
+
+            <p class="alert alert-danger">
+                Tem certeza que deseja deletar o fabricante
+                <strong>{{ fabricante.Fabricante }}</strong>?
+            </p>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+
+                <button type="submit" class="btn btn-danger">
+                    Sim, Deletar
+                </button>
+
+                <a href="{% url 'fabricante' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Nova Categoria{% endblock %}
+{% block title %}Novo Fabricante{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -11,15 +11,23 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Cadastrar Nova Categoria</h2>
+            <h2>Cadastrar Novo Fabricante</h2>
+
             <form method="POST" action="">
                 {% csrf_token %}
+
                 <div class="form-group mb-3">
-                    <label for="categoria_nome">Nome da Categoria:</label>
-                    <input type="text" class="form-control" id="categoria_nome" name="categoria_nome" required>
+                    <label for="fabricante_nome">Nome do Fabricante:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="fabricante_nome"
+                        name="fabricante_nome"
+                        required>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="{% url 'categoria' %}" class="btn btn-secondary">Cancelar</a>
+                <a href="{% url 'fabricante' %}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
     </div>
